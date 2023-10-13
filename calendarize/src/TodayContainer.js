@@ -1,6 +1,20 @@
 import React, { useRef, useState } from 'react';
 import TodayCard from './Today';
 
+fetch('./CollegeEvents.json')
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Parse the JSON response
+  })
+  .then((data) => {
+    // Process the JSON data
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error('Error reading JSON file:', error);
+  });
 
 
 function TodayCardContainer() {
