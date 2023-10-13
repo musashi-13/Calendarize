@@ -13,7 +13,8 @@
   height: 1.5 em;
   background-color: #73A9AD;
   border: none;
-  margin-right: 2em;
+  margin-right: 1em;
+  padding: 1em;
 }
 
 .App-header {
