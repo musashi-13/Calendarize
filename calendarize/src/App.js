@@ -1,7 +1,7 @@
 import './App.css';
-import TodayCard from './Today';
+import TodayCardContainer from './TodayContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faCirclePlus, faBell } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
@@ -10,12 +10,10 @@ function App() {
         <h1 className="nameLogo">CALENDARIZE</h1>
         <button className="addEvent"><FontAwesomeIcon icon={faCirclePlus} size="xl" /></button>
         <button className="profile"><FontAwesomeIcon icon={faUser} size="xl"/></button>
+        <button className="notifications"><FontAwesomeIcon icon={faBell} size="xl"/></button>      
       </nav>
-      <div className="TodayCardContainer">
-      {[...Array(10)].map((_, index) => (
-          <TodayCard key={index} EventName="Hallothon" EventFrom="14th Oct" />
-        ))}
-      </div>
+      
+      <TodayCardContainer />
     </div>
   );
 }
