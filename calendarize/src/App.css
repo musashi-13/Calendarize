@@ -1,7 +1,19 @@
-.navbar{
+.navBar{
   background-color: #73A9AD;
   display: flex;
-  flex-wrap: wrap;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.nameLogo{
+  flex: 1;
+}
+
+.addEvent, .profile{
+  height: 1.5 em;
+  background-color: #73A9AD;
+  border: none;
+  margin-right: 2em;
 }
 
 .App-header {
