@@ -12,7 +12,7 @@ function App() {
         <button className="profile"><FontAwesomeIcon icon={faUser} size="xl"/></button>
         <button className="notifications"><FontAwesomeIcon icon={faBell} size="xl"/></button>      
       </nav>
-      
+      <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer />
     </div>
   );

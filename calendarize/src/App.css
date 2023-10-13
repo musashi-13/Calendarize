@@ -22,16 +22,20 @@
   padding: 1em;
 }
 .TodayCard{
-  background-color: yellow;
   z-index: 0;
   padding: 2em;
   width: fit-content;
   border-radius: 1em;
   user-select: none;
 }
+
+.todayEvents{
+  margin-left: 1.5em;
+}
+
 .todayCardContainer{
   width: 100%;
-  margin: 3em;
+  margin-left: 3em;
   display: flex;
   gap: 1em;
   overflow-x: auto;
