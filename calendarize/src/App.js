@@ -3,12 +3,11 @@ import './App.css';
 
 function App() {
   return (
-    <navigator className="navbar">
-      <h1>CALENDARIZE</h1>
-      <button>Add Event</button>
-      <button>Profile</button>
+    <navigator className="navBar">
+      <h1 className="nameLogo">CALENDARIZE</h1>
+      <button className="addEvent">Add Event</button>
+      <button className="profile">Profile</button>
     </navigator>
   );
 }
-
 export default App;
