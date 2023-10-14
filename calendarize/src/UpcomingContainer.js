@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import UpcomingCard from './upcoming';
 import CollegeEvents from './CollegeEvents.json';
 import cardTheme from './CardTheme';
-import Calendar from './calendar';
 
 
 function UpcomingCardContainer() {
@@ -61,11 +60,12 @@ function UpcomingCardContainer() {
         const gradientStyle = cardTheme[cEvent.eventTheme];
         
         if (
-          eventFromDate.getDate() === tomorrow.getDate() &&
-          eventFromDate.getMonth() === tomorrow.getMonth() &&
-          eventFromDate.getFullYear() === tomorrow.getFullYear()
+          eventFromDate.getDate() === today.getDate() &&
+          eventFromDate.getMonth() === today.getMonth() &&
+          eventFromDate.getFullYear() === today.getFullYear()
         ) {
-          
+          return null;
+        }else {
           return(
             <div
           onMouseDown={handleMouseDown}
@@ -84,8 +84,6 @@ function UpcomingCardContainer() {
           />
           </div>
           )
-        }else {
-          return null;
         }
       })
       }

@@ -3,16 +3,15 @@ import TodayCardContainer from './TodayContainer';
 import UpcomingCardContainer from './UpcomingContainer';
 import Calendar from './calendar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCirclePlus, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
   return (
     <div>
       <nav className="navBar">
-        <h1 className="nameLogo">CALENDARIZE</h1>
-        <button className="addEvent"><FontAwesomeIcon icon={faCirclePlus} size="xl" /></button>
-        <button className="profile"><FontAwesomeIcon icon={faUser} size="xl"/></button>
+        <h1 className="nameLogo">SYNCD</h1>
+        <button className="likedEvents"><FontAwesomeIcon icon={faHeart} size="xl" /></button>
         <button className="notifications"><FontAwesomeIcon icon={faBell} size="xl"/></button>      
       </nav>
       <h1 className="todayEvents">Today's Events</h1>

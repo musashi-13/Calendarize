@@ -53,7 +53,6 @@ function TodayCardContainer() {
           hour: 'numeric',
           hour12: true,
         });
-        console.log(cardTheme[cEvent.eventTheme])
         const gradientStyle = cardTheme[cEvent.eventTheme];
         
         if (

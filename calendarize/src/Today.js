@@ -7,11 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function TodayCard(props) {
   const [isLiked, setIsLiked] = useState(props.like);
   const handleLike = () => {
-    setIsLiked(!isLiked); // Toggle isLiked
+    setIsLiked(!isLiked);
   };
   return (
     <div className="TodayCard" style={{ background: props.linearGradient }}>
-      <div style={{display: "flex", justifyContent: "space-around"}}>
+      <div style={{display: "flex", justifyContent: "space-between"}}>
         <h1 style={{margin:0}}>{props.EventName}</h1>
       <button className={`heartButton ${isLiked ? 'liked' : ''}`} onClick={handleLike}><FontAwesomeIcon icon={faHeart} size="2xl" />
       </button>

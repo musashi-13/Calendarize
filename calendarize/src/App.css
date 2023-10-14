@@ -11,7 +11,7 @@
 .nameLogo{
   flex: 1;
 }
-.addEvent, .profile, .notifications{
+.likedEvents, .notifications{
   height: 1.5 em;
   background-color: #73A9AD;
   border: none;
