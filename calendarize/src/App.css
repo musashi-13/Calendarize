@@ -147,3 +147,48 @@
   background-color: white;
   border: none;
 }
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Adjust this value to control how far the sidebar is hidden */
+  width: 350px;
+  height: 100%;
+  background: white;
+  transition: right 0.3s;
+  z-index: 10;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.SidebarCard{
+  margin-left: 1.5em;
+  width: 17em;
+  height: 7em;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  user-select: none;
+  color: white;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+.sideregButton{
+  margin:0.1em;
+  margin-top: 0em;
+  font-size: 14px;
+  background-color: white;
+  border: none;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+.closeButton {
+  background-color: rgb(0,0,0,0);
+  border: none;
+  margin: 1.5em;
+  margin-top: 2em;
+}
