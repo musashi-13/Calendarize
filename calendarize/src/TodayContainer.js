@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import TodayCard from './Today';
 import CollegeEvents from './CollegeEvents.json';
 import cardTheme from './CardTheme';
-import regStatus from './RegStatus';
 
 
 function TodayCardContainer() {
@@ -40,6 +39,7 @@ function TodayCardContainer() {
         const eventFromDate = new Date(cEvent.eventFrom);
         const eventToDate = new Date(cEvent.eventTo);
         const today = new Date();
+        const closingDate = new Date(cEvent.regStatus);
         const formattedFromDate = eventFromDate.toLocaleDateString('en-IN', {
           year: '2-digit',
           month: '2-digit',
@@ -74,8 +74,9 @@ function TodayCardContainer() {
           EventFrom={formattedFromDate} 
           EventTo={formattedToDate} 
           EventDesc={cEvent.eventDesc}
+          StudentCrit={cEvent.studentCriteria}
           RegLink={cEvent.regLink}
-          RegStatus={cEvent.regStatus}
+          RegStatus={closingDate-today}
           linearGradient={gradientStyle}
           />
           </div>
@@ -85,7 +86,6 @@ function TodayCardContainer() {
         }
       })
       }
-      <div className="todayGradient"></div>
     </div>
   );
 }

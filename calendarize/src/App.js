@@ -14,6 +14,8 @@ function App() {
       </nav>
       <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer />
+      <h1 className="upcomingEvents">Upcoming Events</h1>
+      <TodayCardContainer />
     </div>
   );
 }

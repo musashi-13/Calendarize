@@ -23,34 +23,39 @@
 }
 .TodayCard{
   z-index: 0;
-  width: 20em;
-  height: 10em;
+  width: 18em;
+  height: 11em;
   padding: 0.5em 1em;
   border-radius: 1em;
   user-select: none;
   color: white;
+  transition: 0.4s;
+}
+
+.TodayCard:hover{
+  scale: 1.05;
 }
 
 .todayEvents{
   margin-left: 1.5em;
+  margin-bottom: 0;
+}
+.upcomingEvents{
+  margin-left: 1.5em;
+  margin-bottom: 0;
 }
 
 .todayCardContainer{
   width: 100%;
+  padding: 1em;
   margin-left: 3em;
   display: flex;
   gap: 1em;
   overflow-x: auto;
 }
-.todayGradient{
-  position: absolute;
-  height: 260px;
-  width: 100px;
-  right: 0%;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 75%);
-}
-
 .regButton{
+  margin:0.3em;
+  font-size: 14px;
   background-color: white;
   border: none;
   border-radius: 1em;
