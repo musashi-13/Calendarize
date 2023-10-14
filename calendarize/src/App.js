@@ -1,8 +1,10 @@
 import './App.css';
 import TodayCardContainer from './TodayContainer';
+import UpcomingCardContainer from './UpcomingContainer';
+import Calendar from './calendar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCirclePlus, faBell } from '@fortawesome/free-solid-svg-icons'
-import UpcomingCardContainer from './UpcomingContainer';
+
 
 function App() {
   return (
@@ -16,11 +18,11 @@ function App() {
       <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer />
       <h1 className="upcomingEvents">Upcoming Events</h1>
-      <div>
+      <div className="calendarContainer">
+        <Calendar />
+      </div>
+      <div className="upcomingContainer">
         <UpcomingCardContainer />
-        <div className="calendarContainer">  
-          <h1 className="calendarHeading">Calendar</h1>
-        </div>
       </div>
     </div>
   );

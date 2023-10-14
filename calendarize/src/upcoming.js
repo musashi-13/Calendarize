@@ -28,6 +28,5 @@ function UpcomingCard(props) {
       </div>
     );
   }
-  
 
 export default UpcomingCard
