@@ -23,10 +23,12 @@
 }
 .TodayCard{
   z-index: 0;
-  padding: 2em;
-  width: fit-content;
+  width: 20em;
+  height: 10em;
+  padding: 0.5em 1em;
   border-radius: 1em;
   user-select: none;
+  color: white;
 }
 
 .todayEvents{

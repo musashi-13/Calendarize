@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import TodayCard from './Today';
 import CollegeEvents from './CollegeEvents.json';
+import cardTheme from './CardTheme';
 
 
 function TodayCardContainer() {
@@ -8,7 +9,6 @@ function TodayCardContainer() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const gradientStyle = 'linear-gradient(-225deg, rgba(253,29,29,1) 0px, rgba(0,0,0,1) 400px)';
 
   const handleMouseDown = (e) => {
   setIsDragging(true);
@@ -36,15 +36,49 @@ function TodayCardContainer() {
     onMouseMove={handleMouseMove}
     >
       {CollegeEvents.map(cEvent => {
-        return(
-          <div
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-        >
-        <TodayCard EventName={cEvent.eventName} EventFrom={cEvent.eventFrom} EventTo={cEvent.eventTo} linearGradient={gradientStyle} />
-        </div>
-        )
+        const eventFromDate = new Date(cEvent.eventFrom);
+        const eventToDate = new Date(cEvent.eventTo);
+        const today = new Date();
+        const formattedFromDate = eventFromDate.toLocaleDateString('en-IN', {
+          year: '2-digit',
+          month: '2-digit',
+          day: '2-digit',
+          hour: 'numeric',
+          hour12: true,
+        });
+        const formattedToDate = eventToDate.toLocaleDateString('en-IN', {
+          year: '2-digit',
+          month: '2-digit',
+          day: '2-digit',
+          hour: 'numeric',
+          hour12: true,
+        });
+        console.log(cardTheme[cEvent.eventTheme])
+        const gradientStyle = cardTheme[cEvent.eventTheme];
+        
+        if (
+          eventFromDate.getDate() === today.getDate() &&
+          eventFromDate.getMonth() === today.getMonth() &&
+          eventFromDate.getFullYear() === today.getFullYear()
+        ) {
+          
+          return(
+            <div
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          >
+          <TodayCard 
+          EventName={cEvent.eventName} 
+          EventFrom={formattedFromDate} 
+          EventTo={formattedToDate} 
+          EventDesc={cEvent.eventDesc}
+          linearGradient={gradientStyle} />
+          </div>
+          )
+        }else {
+          return null;
+        }
       })
       }
       <div className="todayGradient"></div>
