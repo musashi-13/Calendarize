@@ -3,11 +3,13 @@ import TodayCard from './Today';
 import CollegeEvents from './CollegeEvents.json';
 import cardTheme from './CardTheme';
 
-function TodayCardContainer() {
+
+function TodayCardContainer(props) {
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+
 
   const handleMouseDown = (e) => {
   setIsDragging(true);
@@ -54,8 +56,9 @@ function TodayCardContainer() {
           hour12: true,
         });
         const gradientStyle = cardTheme[cEvent.eventTheme];
-        
-        if (
+        if (props.showLiked && !cEvent.like) {
+          return null;
+        } else if (
           eventFromDate.getDate() === today.getDate() &&
           eventFromDate.getMonth() === today.getMonth() &&
           eventFromDate.getFullYear() === today.getFullYear()
@@ -75,7 +78,7 @@ function TodayCardContainer() {
           StudentCrit={cEvent.studentCriteria}
           RegLink={cEvent.regLink}
           RegStatus={closingDate-today}
-          Like={false}
+          Like={cEvent.like} 
           linearGradient={gradientStyle}
           />
           </div>

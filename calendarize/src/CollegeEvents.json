@@ -7,7 +7,7 @@
   "regStatus": "2023-10-12T23:00:00",
   "eventDesc": "PES's biggest 24 hour hackathon",
   "eventTheme": "Hackathon",
-  "like": 0
+  "like": 1
 },
 {
   "eventName": "Kodikon 3.0",
@@ -40,7 +40,7 @@
   "regStatus": "2023-10-12T23:00:00",
   "eventDesc": "Run for Martyrs",
   "eventTheme": "Marathon",
-  "like": 0
+  "like": 1
 },
 {
   "eventName": "ICFI",
@@ -48,7 +48,7 @@
   "eventTo": "2023-12-01T16:00:00",
   "studentCriteria": "Open To All",
   "regLink": "fa",
-  "regStatus": "2023-11-10T23:00:00",
+  "regStatus": "2023-10-15T23:00:00",
   "eventDesc": "Research Paper",
   "eventTheme": "Conference",
   "like": 0
@@ -72,7 +72,7 @@
   "regStatus": "2023-10-16T23:00:00",
   "eventDesc": "festival celebration",
   "eventTheme": "Cultural",
-  "like": 0
+  "like": 1
 },
 {
   "eventName": "Birds of a Feather",
@@ -95,4 +95,16 @@
   "eventDesc": "To reviewq your ISA Papers",
   "eventTheme": "Academic",
   "like": 0
-}]
+},
+{
+  "eventName": "ISA Script Review",
+  "eventFrom": "2023-10-16T15:45:00",
+  "eventTo": "2023-10-16T16:30:00",
+  "studentCriteria": "PES only",
+  "regLink": "fa",
+  "regStatus": "2023-10-16T23:00:00",
+  "eventDesc": "To reviewq your ISA Papers",
+  "eventTheme": "lol",
+  "like": 0
+}
+]

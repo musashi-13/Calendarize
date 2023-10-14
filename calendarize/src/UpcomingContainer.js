@@ -4,7 +4,7 @@ import CollegeEvents from './CollegeEvents.json';
 import cardTheme from './CardTheme';
 
 
-function UpcomingCardContainer() {
+function UpcomingCardContainer(props) {
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -56,39 +56,37 @@ function UpcomingCardContainer() {
           hour: 'numeric',
           hour12: true,
         });
-        console.log(cardTheme[cEvent.eventTheme])
         const gradientStyle = cardTheme[cEvent.eventTheme];
-        
-        if (
+        if (props.showLiked && !cEvent.like) {
+          return null;
+        } else if (
           eventFromDate.getDate() === today.getDate() &&
           eventFromDate.getMonth() === today.getMonth() &&
           eventFromDate.getFullYear() === today.getFullYear()
         ) {
           return null;
-        }else {
-          return(
+        } else {
+          return (
             <div
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          >
-          <UpcomingCard 
-          EventName={cEvent.eventName} 
-          EventFrom={formattedFromDate} 
-          EventTo={formattedToDate} 
-          EventDesc={cEvent.eventDesc}
-          StudentCrit={cEvent.studentCriteria}
-          RegLink={cEvent.regLink}
-          RegStatus={closingDate-today}
-          linearGradient={gradientStyle}
-          />
-          </div>
-          )
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+            >
+              <UpcomingCard
+                EventName={cEvent.eventName}
+                EventFrom={formattedFromDate}
+                EventTo={formattedToDate}
+                EventDesc={cEvent.eventDesc}
+                StudentCrit={cEvent.studentCriteria}
+                RegLink={cEvent.regLink}
+                RegStatus={closingDate - today}
+                linearGradient={gradientStyle}
+              />
+            </div>
+          );
         }
-      })
-      }
+      })}
     </div>
-
   );
 }
 

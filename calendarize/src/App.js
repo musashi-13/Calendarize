@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useRef, useState } from 'react';
 import TodayCardContainer from './TodayContainer';
 import UpcomingCardContainer from './UpcomingContainer';
 import Calendar from './calendar';
@@ -7,17 +8,22 @@ import { faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
+  const [showLiked, setShowLiked] = useState(false);
+
+  const toggleShowLiked = () => {
+    setShowLiked(!showLiked);
+  };
   return (
     <div>
       <nav className="navBar">
         <h1 className="nameLogo">SYNCD</h1>
-        <button className="likedEvents"><FontAwesomeIcon icon={faHeart} size="xl" /></button>
+        <button className="likedEvents" onClick={toggleShowLiked}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
         <button className="notifications"><FontAwesomeIcon icon={faBell} size="xl"/></button>      
       </nav>
       <h1 className="todayEvents">Today's Events</h1>
-      <TodayCardContainer />
+      <TodayCardContainer showLiked={showLiked}/>
       <h1 className="upcomingEvents">Upcoming Events</h1>
-      <UpcomingCardContainer />
+      <UpcomingCardContainer showLiked={showLiked}/>
       <div className="calendarContainer">
         <Calendar />
       </div>
