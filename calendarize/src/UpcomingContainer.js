@@ -57,9 +57,7 @@ function UpcomingCardContainer(props) {
           hour12: true,
         });
         const gradientStyle = cardTheme[cEvent.eventTheme];
-        if (props.showLiked && !cEvent.like) {
-          return null;
-        } else if (
+        if (
           eventFromDate.getDate() === today.getDate() &&
           eventFromDate.getMonth() === today.getMonth() &&
           eventFromDate.getFullYear() === today.getFullYear()
@@ -80,6 +78,7 @@ function UpcomingCardContainer(props) {
                 StudentCrit={cEvent.studentCriteria}
                 RegLink={cEvent.regLink}
                 RegStatus={closingDate - today}
+                Like={props.showLiked}
                 linearGradient={gradientStyle}
               />
             </div>

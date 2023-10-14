@@ -12,6 +12,7 @@ function App() {
 
   const toggleShowLiked = () => {
     setShowLiked(!showLiked);
+    console.log(showLiked)
   };
   return (
     <div>
