@@ -18,11 +18,9 @@ function App() {
       <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer />
       <h1 className="upcomingEvents">Upcoming Events</h1>
+      <UpcomingCardContainer />
       <div className="calendarContainer">
         <Calendar />
-      </div>
-      <div className="upcomingContainer">
-        <UpcomingCardContainer />
       </div>
     </div>
   );

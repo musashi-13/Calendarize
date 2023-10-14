@@ -47,7 +47,6 @@
   display: flex;
   gap: 1em;
   overflow-x: auto;
-  z-index: 10;
 }
 .UpcomingCard{
   width: 18em;
@@ -59,23 +58,20 @@
   transition: 0.4s;
   max-height: 4em;
   overflow: hidden;
-  z-index: 10;
 }
 .UpcomingCard:hover {
   max-height: 100%;
+  scale: 1.05;
 }
 .todayEvents{
   margin-left: 1.5em;
   margin-bottom: 0;
 }
 .upcomingEvents{
-  z-index: 3;
   margin-left: 1.5em;
   margin-bottom: 0;
   margin-top: 0;
-  z-index: 10;
 }
-
 .regButton{
   margin:0.3em;
   font-size: 14px;
@@ -84,29 +80,29 @@
   border-radius: 1em;
   padding: 0.5em;
 }
+.heartButton{
+  color: white;
+  margin: none;
+  background-color: rgb(0,0,0,0);
+  border: none;
+}
+
+.heartButton.liked{
+  color: red;
+}
+
 
 .calendarContainer{
   position: absolute;
   top: 500px;
+  transition: 0.4s;
 }
 
-.upcomingContainer{
-  position: absolute;
-  top: 400px;
-  z-index: 20;
+.upcomingCardContainer:hover + .calendarContainer{
+  top: 600px;
 }
 
-.calendarContainer{
-  z-index: 1;
-  transition: 0.4;
-} 
-.calendarHeading{
-  z-index: 0;
-}
-.calendarAndNewReg{
-  display: flex;
-  justify-content: space-between;
-}
+
 .newRegistrations, .calendarContainer{
   margin-left: 3em;
   margin-right: 3em;
@@ -114,7 +110,7 @@
 
 
 .calendar-table {
-  width: 60%;
+  width: 80%;
   border-collapse: collapse;
   margin-top: 20px;
   margin-left: 0px;
@@ -123,7 +119,9 @@
 
 .header-cell,
 .calendar-cell {
-  padding: 30px;
+  width: 180px;
+  height: 180px;
+  padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
 }
@@ -135,13 +133,13 @@
 .calendar-cell:hover {
   background-color: #e6e6e6;
   cursor: pointer;
-  scale:1.5;
+  scale:1.1;
   transition: all 0.5s ease-in-out;
   border: 2px solid white;
   border-radius: 20px;
 }
 .b1{
-  margin-left:370px;
+  margin-left:500px;
   background-color: white;
   border: none;
 }

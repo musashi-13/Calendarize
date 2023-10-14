@@ -57,7 +57,6 @@ const Calendar = () => {
 
 const createCalendar = () => {
   const calendar = [];
-  let dayIndex = 0;
 
   calendar.push(
     <tr key="header">

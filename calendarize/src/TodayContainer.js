@@ -3,7 +3,6 @@ import TodayCard from './Today';
 import CollegeEvents from './CollegeEvents.json';
 import cardTheme from './CardTheme';
 
-
 function TodayCardContainer() {
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -26,7 +25,7 @@ function TodayCardContainer() {
   const walk = (x - startX) * 2;
   containerRef.current.scrollLeft = scrollLeft - walk;
   };
-
+  
   return (
     <div
     className= "todayCardContainer"
@@ -77,6 +76,7 @@ function TodayCardContainer() {
           StudentCrit={cEvent.studentCriteria}
           RegLink={cEvent.regLink}
           RegStatus={closingDate-today}
+          Like={false}
           linearGradient={gradientStyle}
           />
           </div>
