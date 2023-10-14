@@ -1,16 +1,18 @@
-{
-  "event":
-    {
-      "EventName": "Hallothon",
-      "EventFrom": "14th Oct",
-      "EventTo": "15th Oct",
-      "EventName1": "Another Event",
-      "EventFrom1": "16th Oct",
-      "EventTo1": "17th Oct"
-    }
-}
-
-
-
-
-
+[
+  {
+    "id": 0,
+    "eventName": "Hallothon",
+    "eventFrom": "14102023",
+    "eventTo": "151023",
+    "regStatus": "closed",
+    "eventDesc": "PES's biggest 24hr hackathon"
+  },
+  {
+    "id": 1,
+    "eventName": "IFSR",
+    "eventFrom": "14102023",
+    "eventTo": "151023",
+    "regStatus": "closed",
+    "eventDesc": "PES's 2nd biggest 24hr hackathon"
+  }
+]

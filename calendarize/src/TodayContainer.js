@@ -1,67 +1,55 @@
 import React, { useRef, useState } from 'react';
 import TodayCard from './Today';
-
-fetch('./CollegeEvents.json')
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json(); // Parse the JSON response
-  })
-  .then((data) => {
-    // Process the JSON data
-    console.log(data);
-  })
-  .catch((error) => {
-    console.error('Error reading JSON file:', error);
-  });
+import CollegeEvents from './CollegeEvents.json';
 
 
 function TodayCardContainer() {
-    const containerRef = useRef(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeft, setScrollLeft] = useState(0);
-    const gradientStyle = 'linear-gradient(-225deg, rgba(253,29,29,1) 0px, rgba(0,0,0,1) 400px)';
+  const containerRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const gradientStyle = 'linear-gradient(-225deg, rgba(253,29,29,1) 0px, rgba(0,0,0,1) 400px)';
 
-    const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - containerRef.current.offsetLeft);
-    setScrollLeft(containerRef.current.scrollLeft);
-    };
+  const handleMouseDown = (e) => {
+  setIsDragging(true);
+  setStartX(e.pageX - containerRef.current.offsetLeft);
+  setScrollLeft(containerRef.current.scrollLeft);
+  };
 
-    const handleMouseUp = () => {
-    setIsDragging(false);
-    };
+  const handleMouseUp = () => {
+  setIsDragging(false);
+  };
 
-    const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const x = e.pageX - containerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    containerRef.current.scrollLeft = scrollLeft - walk;
-    };
+  const handleMouseMove = (e) => {
+  if (!isDragging) return;
+  const x = e.pageX - containerRef.current.offsetLeft;
+  const walk = (x - startX) * 2;
+  containerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
-    return (
-        <div
-        className= "todayCardContainer"
-        ref={containerRef}
+  return (
+    <div
+    className= "todayCardContainer"
+    ref={containerRef}
+    onMouseDown={handleMouseDown}
+    onMouseUp={handleMouseUp}
+    onMouseMove={handleMouseMove}
+    >
+      {CollegeEvents.map(cEvent => {
+        return(
+          <div
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
         >
-            {[...Array(10)].map((_, index) => (
-                <div
-                key={index}
-                onMouseDown={handleMouseDown}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                >
-                <TodayCard EventName="Hallothon" EventFrom="14th Oct" EventTo="15th Oct" linearGradient={gradientStyle} />
-                </div>
-            ))}
-            <div className="todayGradient"></div>
+        <TodayCard EventName={cEvent.eventName} EventFrom={cEvent.eventFrom} EventTo={cEvent.eventTo} linearGradient={gradientStyle} />
         </div>
-    );
+        )
+      })
+      }
+      <div className="todayGradient"></div>
+    </div>
+  );
 }
 
 export default TodayCardContainer;
