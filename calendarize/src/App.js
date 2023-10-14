@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import TodayCardContainer from './TodayContainer';
 import UpcomingCardContainer from './UpcomingContainer';
 import Calendar from './calendar';
