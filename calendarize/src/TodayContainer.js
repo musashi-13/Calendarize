@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import TodayCard from './Today';
 import CollegeEvents from './CollegeEvents.json';
 import cardTheme from './CardTheme';
+import regStatus from './RegStatus';
 
 
 function TodayCardContainer() {
@@ -73,7 +74,10 @@ function TodayCardContainer() {
           EventFrom={formattedFromDate} 
           EventTo={formattedToDate} 
           EventDesc={cEvent.eventDesc}
-          linearGradient={gradientStyle} />
+          RegLink={cEvent.regLink}
+          RegStatus={cEvent.regStatus}
+          linearGradient={gradientStyle}
+          />
           </div>
           )
         }else {
