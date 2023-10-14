@@ -1,7 +1,6 @@
 ::-webkit-scrollbar {
   width: 0;
 }
-
 .navBar{
   background-color: #73A9AD;
   display: flex;
@@ -9,11 +8,9 @@
   padding-right: 2em;
   box-shadow: 0px 5px 47px -1px rgba(0,0,0,0.32);
 }
-
 .nameLogo{
   flex: 1;
 }
-
 .addEvent, .profile, .notifications{
   height: 1.5 em;
   background-color: #73A9AD;
@@ -21,8 +18,17 @@
   margin-right: 1em;
   padding: 1em;
 }
+.todayCardContainer{
+  width: 100%;
+  z-index: 2;
+  padding: 1em;
+  margin-left: 3em;
+  display: flex;
+  gap: 1em;
+  overflow-x: auto;
+  margin-bottom: 0;
+}
 .TodayCard{
-  z-index: 0;
   width: 18em;
   height: 11em;
   padding: 0.5em 1em;
@@ -31,21 +37,10 @@
   color: white;
   transition: 0.4s;
 }
-
 .TodayCard:hover{
   scale: 1.05;
 }
-
-.todayEvents{
-  margin-left: 1.5em;
-  margin-bottom: 0;
-}
-.upcomingEvents{
-  margin-left: 1.5em;
-  margin-bottom: 0;
-}
-
-.todayCardContainer{
+.upcomingCardContainer{
   width: 100%;
   padding: 1em;
   margin-left: 3em;
@@ -53,6 +48,33 @@
   gap: 1em;
   overflow-x: auto;
 }
+.UpcomingCard{
+  width: 18em;
+  height: 11em;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  user-select: none;
+  color: white;
+  transition: 0.4s;
+  max-height: 4em;
+  overflow: hidden;
+  z-index: 10;
+}
+.UpcomingCard:hover {
+  max-height: 100%;
+}
+.todayEvents{
+  margin-left: 1.5em;
+  margin-bottom: 0;
+}
+.upcomingEvents{
+  z-index: 3;
+  margin-left: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  
+}
+
 .regButton{
   margin:0.3em;
   font-size: 14px;
@@ -60,4 +82,11 @@
   border: none;
   border-radius: 1em;
   padding: 0.5em;
+}
+.calendarContainer{
+  z-index: 1;
+  transition: 0.4;
+} 
+.calendarHeading{
+  z-index: 0;
 }
