@@ -10,6 +10,7 @@ function TodayCardContainer(props) {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
+
   const handleMouseDown = (e) => {
   setIsDragging(true);
   setStartX(e.pageX - containerRef.current.offsetLeft);
@@ -26,6 +27,7 @@ function TodayCardContainer(props) {
   const walk = (x - startX) * 2;
   containerRef.current.scrollLeft = scrollLeft - walk;
   };
+  
   return (
     <div
     className= "todayCardContainer"
@@ -76,7 +78,7 @@ function TodayCardContainer(props) {
           StudentCrit={cEvent.studentCriteria}
           RegLink={cEvent.regLink}
           RegStatus={closingDate-today}
-          Like={cEvent.like}
+          Like={cEvent.like} 
           linearGradient={gradientStyle}
           />
           </div>

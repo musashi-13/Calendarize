@@ -12,10 +12,10 @@ function UpcomingCard(props) {
   return (
     <div className="UpcomingCard" style={{ background: props.linearGradient }}>
       <div style={{display: "flex", justifyContent: "space-between"}}>
-      <h1 style={{margin:0}}>{props.EventName}</h1>
-    <button className={`heartButton ${isLiked ? 'liked' : ''}`} onClick={handleLike}><FontAwesomeIcon icon={faHeart} size="2xl" />
-    </button>
-    </div>
+        <h1 style={{margin:0}}>{props.EventName}</h1>
+      <button className={`heartButton ${isLiked ? 'liked' : ''}`} onClick={handleLike}><FontAwesomeIcon icon={faHeart} size="2xl" />
+      </button>
+      </div>
       <p style={{marginTop:0, marginBottom: '1em', fontSize:'14px', textTransform: "uppercase"}}>{props.EventFrom} to {props.EventTo}</p>
       <p style={{margin:'0.3em', fontSize:'14px',}}>{props.EventDesc}</p>
       <p style={{marginTop:'0.3em',marginLeft:'0.3em', marginBottom: '1em', fontSize:'14px',}}>Criteria: {props.StudentCrit}</p>
@@ -39,6 +39,6 @@ function UpcomingCard(props) {
       }
     </div>
   );
-  }
+}
 
 export default UpcomingCard
