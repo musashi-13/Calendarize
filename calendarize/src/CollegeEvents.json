@@ -165,10 +165,10 @@
 },
 {
   "eventName": "ISA-2",
-  "eventFrom": "2023-12-1T08:00:00",
-  "eventTo": "2023-12-1T10:15:00",
+  "eventFrom": "2023-12-01T08:00:00",
+  "eventTo": "2023-12-01T10:15:00",
   "eventTheme": "ISA",
-  "eventDesc": "ISA",
+  "eventDesc": "",
   "regLink": "",
   "regStatus": "",
   "studentCriteria": "",
