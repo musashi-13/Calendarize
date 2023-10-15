@@ -5,6 +5,7 @@ const cardTheme = {
   Cultural: 'linear-gradient(to right, #333333, #000000)',
   OpenMic: 'linear-gradient(to right, #17A2B8, #138496)',
   Academic: 'linear-gradient(to right, #FFC107, #FFA000)',
+  ISA: 'linear-gradient(to right, #833ab4, #371dfd)',
   };
   
-  export default cardTheme;
+export default cardTheme;

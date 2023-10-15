@@ -57,9 +57,12 @@ function TodayCardContainer(props) {
         });
         const gradientStyle = cardTheme[cEvent.eventTheme];
         if (
-          eventFromDate.getDate() === today.getDate() &&
-          eventFromDate.getMonth() === today.getMonth() &&
-          eventFromDate.getFullYear() === today.getFullYear()
+          (today.getDate() >= eventFromDate.getDate()  &&
+          today.getMonth() >= eventFromDate.getMonth() &&
+          today.getFullYear() >= eventFromDate.getFullYear())&&
+          (today.getDate() <= eventToDate.getDate() &&
+          today.getMonth() <= eventToDate.getMonth() &&
+          today.getFullYear() <= eventToDate.getFullYear() )
         ) {
           
           return(

@@ -1,46 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight, faX } from '@fortawesome/free-solid-svg-icons';
+import eventsData from './CollegeEvents.json';
+import cardTheme from './CardTheme';
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [events, setEvents] = useState({});
+  const [showEventModal, setShowEventModal] = useState(false);
+  const [selectedEventData, setSelectedEventData] = useState([]);
+  const [selectedEventDate, setSelectedEventDate] = useState(null);
 
   const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
   const firstDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDay();
-
-  const updateCalendar = () => {
-    setEvents((prevEvents) => {
-      const newEvents = { ...prevEvents };
-
-      for (let day = 1; day <= daysInMonth; day++) {
-        const key = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${day}`;
-        newEvents[key] = newEvents[key] || [];
-      }
-      const mockevent = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-14`;
-      newEvents[mockevent] = ['Mock Event'];
-
-
-      return newEvents;
-    });
-  };
-
-  const showEvents = (day) => {
-    const key = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${day}`;
-    const eventList = events[key] ? events[key].map((event, index) => <li key={index}>{event}</li>) : null;
-
-    alert(`Events for ${selectedDate.toLocaleDateString()}-${day}:`, <ul>{eventList}</ul>);
-  };
-
-  const saveEvent = (day, event) => {
-    const key = `${selectedDate.getFullYear()}-${selectedDate.getMonth() + 1}-${day}`;
-    setEvents((prevEvents) => ({
-      ...prevEvents,
-      [key]: [...(prevEvents[key] || []), event],
-    }));
-  };
 
   const prevMonth = () => {
     setSelectedDate(new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, 1));
@@ -54,61 +24,141 @@ const Calendar = () => {
     return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   };
 
+  const getEventInfo = (day) => {
+    const currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), day);
 
-const createCalendar = () => {
-  const calendar = [];
+    const matchingEvents = eventsData.filter((event) => {
+      const eventFrom = new Date(event.eventFrom);
+      const eventTo = new Date(event.eventTo);
 
-  calendar.push(
-    <tr key="header">
-      {getDaysArray().map((day) => (
-        <th key={day} className="header-cell">
-          {day}
-        </th>
-      ))}
-    </tr>
-  );
+      // Adjusted logic to include events that start on the selected day
+      const eventStartDate = new Date(eventFrom.getFullYear(), eventFrom.getMonth(), eventFrom.getDate());
 
-  const totalWeeks = Math.ceil((daysInMonth + firstDayOfMonth) / 7);
+      return currentDate >= eventStartDate && currentDate < eventTo;
+    });
 
-  for (let week = 0; week < totalWeeks; week++) {
-    const row = [];
+    return matchingEvents;
+  };
 
-    for (let day = 0; day < 7; day++) {
-      const dayNumber = week * 7 + day + 1 - firstDayOfMonth;
+  const createCalendar = () => {
+    const calendar = [];
 
-      row.push(
-        <td key={day} className="calendar-cell" onClick={() => handleDateClick(dayNumber)}>
-          {dayNumber > 0 && dayNumber <= daysInMonth ? dayNumber : ''}
-        </td>
-      );
+    calendar.push(
+      <tr key="header">
+        {getDaysArray().map((day) => (
+          <th key={day} className="header-cell">
+            {day}
+          </th>
+        ))}
+      </tr>
+    );
+
+    const totalWeeks = Math.ceil((daysInMonth + firstDayOfMonth) / 7);
+
+    for (let week = 0; week < totalWeeks; week++) {
+      const row = [];
+
+      for (let day = 0; day < 7; day++) {
+        const dayNumber = week * 7 + day + 1 - firstDayOfMonth;
+
+        row.push(
+          <td key={day} className="calendar-cell" onClick={() => handleDateClick(dayNumber)}>
+            {dayNumber > 0 && dayNumber <= daysInMonth ? (
+              <div>
+                <div>{dayNumber}</div>
+                {getEventInfo(dayNumber).map((event, index) => (
+                  <div key={index}>
+                    <strong style={{background: cardTheme[event.eventTheme], color:'white', padding: "0.2em",borderRadius:"0.2em", margin:"0.3em"} }className='cont'>{event.eventName}</strong>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              ''
+            )}
+          </td>
+        );
+      }
+
+      calendar.push(<tr key={week}>{row}</tr>);
     }
 
-    calendar.push(<tr key={week}>{row}</tr>);
-  }
-
-  return calendar;
-};
-
+    return calendar;
+  };
 
   const handleDateClick = (day) => {
     if (day > 0 && day <= daysInMonth) {
-      showEvents(day);
+      const currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), day);
+      const endOfDay = new Date(currentDate);
+      endOfDay.setHours(23, 59, 59, 999); // Set to the end of the day
+
+      const matchingEvents = eventsData.filter((event) => {
+        const eventStartDate = new Date(event.eventFrom);
+        const eventEndDate = new Date(event.eventTo);
+
+        // Include events that start on or after the selected date and end on or before the end of the selected date
+        return eventStartDate <= endOfDay && eventEndDate >= currentDate;
+      });
+
+      setSelectedEventData(matchingEvents);
+      setSelectedEventDate(currentDate);
+      setShowEventModal(true);
+    } else {
+      setSelectedEventData([]);
+      setSelectedEventDate(null);
+      setShowEventModal(false);
     }
   };
 
-  return (
-    <div>
-      <h1>Calendar of Events</h1>
-      <div classname="div-container">
-        <button onClick={prevMonth} className="b1"><FontAwesomeIcon icon={faArrowLeft} /></button>&nbsp;&nbsp;
-        <span>{selectedDate.toLocaleString('default',{ month: 'long', year: 'numeric' })}</span>&nbsp;&nbsp;
-        <button onClick={nextMonth} className="b2"><FontAwesomeIcon icon={faArrowRight}/></button>
-      </div>
-      <table className="calendar-table">
-        <tbody>{createCalendar()}</tbody>
-      </table>
-    </div>
+  const hideEventModal = () => {
+    setSelectedEventDate(null);
+    setShowEventModal(false);
+  };
 
-)};
+  return (
+    <div style={{display: "flex"}}>
+      <div>
+        <h1>Calendar of Events</h1>
+        <div className="div-container">
+          <button onClick={prevMonth} className="b1">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+          &nbsp;&nbsp;
+          <span>{selectedDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>
+          &nbsp;&nbsp;
+          <button onClick={nextMonth} className="b2">
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        </div>
+        <table className="calendar-table">
+          <tbody>{createCalendar()}</tbody>
+        </table>
+      </div>
+      <div style={{position: "relative", top: "100px", marginLeft: "20px", width: "300px"}}>
+        {showEventModal && selectedEventDate && (
+          <div className="event-modal">
+            <div className="event-modal-content">
+              <h2>Events for {selectedEventDate.toLocaleDateString('en-IN')}: {selectedEventData.length > 0 ? '' : 'No events'}</h2>
+              <ul style={{margin: 0, padding: 0}}>
+                {selectedEventData.map((event, index) => (
+                  <div key={index}>
+                    <h3 style={{margin:0, marginTop:"10px"}}>{event.eventName}</h3>
+                    <p style={{margin:0}}>{event.eventDesc}</p>
+                    <p style={{margin:0}}>{event.studentCriteria}</p>
+                    <p style={{margin:0}}>Registration Link: {event.regLink}</p>
+                    <p style={{margin:0}}>Last Date to Register: {event.regStatus}</p>
+                    <p style={{margin:0}}>Category: {event.eventTheme}</p>
+                  </div>
+                ))}
+              </ul>
+              <button onClick={hideEventModal} style={{marginTop: "20px", backgroundColor: "rgb(0,0,0,0)", border: "none"}}>
+                <FontAwesomeIcon icon={faX} size='xl' />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default Calendar;

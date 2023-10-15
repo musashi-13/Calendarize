@@ -40,6 +40,7 @@ function TodayCard(props) {
         }
       </div>
     );
+
   } else if (isLiked) {
     return (
       <div className="TodayCard" style={{ background: props.linearGradient }}>

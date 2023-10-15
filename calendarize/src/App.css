@@ -108,23 +108,44 @@
   margin-right: 3em;
 }
 
+.calendarContainer{
+  position: absolute;
+  top: 500px;
+  transition: 0.4s;
+}
+
+.upcomingCardContainer:hover + .calendarContainer{
+  top: 600px;
+}
+
+
+.newRegistrations, .calendarContainer{
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
 
 .calendar-table {
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   margin-left: 0px;
   margin-right:50px
 }
 
-.header-cell,
-.calendar-cell {
+.header-cell{
   width: 180px;
-  height: 180px;
+  height: 30px;
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
-  transition: 0.4s ease-in-out;
+}
+.calendar-cell {
+  width: 180px;
+  height: 160px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
 }
 
 .header-cell {
@@ -135,6 +156,7 @@
   background-color: #e6e6e6;
   cursor: pointer;
   scale:1.1;
+  transition: all 0.5s ease-in-out;
   border: 2px solid white;
   border-radius: 20px;
 }
@@ -147,14 +169,18 @@
   background-color: white;
   border: none;
 }
-
+.cont{
+display: flex;
+justify-content: space-between;
+margin:0 auto;
+}
 
 .sidebar {
   position: fixed;
   top: 0;
   right: -350px; /* Adjust this value to control how far the sidebar is hidden */
   width: 350px;
-  height: 100%;
+  height: 1500px;
   background: white;
   transition: right 0.3s;
   z-index: 10;
