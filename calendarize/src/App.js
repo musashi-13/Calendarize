@@ -5,7 +5,7 @@ import UpcomingCardContainer from './UpcomingContainer';
 import Calendar from './calendar';
 import Sidebar from './sideBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faBell, faScrewdriverWrench, faUser} from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
@@ -26,10 +26,12 @@ function App() {
     <div>
       <nav className="navBar">
         <h1 className="nameLogo">SYNCd</h1>
-        <button className="likedEvents" onClick={toggleShowLiked} style={{color: "white"}}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
-        <button className="notifications" onClick={toggleSidebar} style={{color: "white"}}><FontAwesomeIcon icon={faBell} size="xl"/></button>      
         <button className="notifications"><a href='https://github.com/kaushik-bhat/Calendarize' style={{textDecoration: "none", color: "white"}}><FontAwesomeIcon icon={faGithub} size="xl"/></a></button>      
-      </nav>
+        <button className="notifications" style={{color: "white"}}><FontAwesomeIcon icon={faScrewdriverWrench} size="xl"/></button>
+        <button className="likedEvents" onClick={toggleShowLiked} style={{color: "white"}}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
+        <button className="notifications" style={{color: "white"}}><FontAwesomeIcon icon={faUser} size="xl"/></button>      
+        <button className="notifications" onClick={toggleSidebar} style={{color: "white"}}><FontAwesomeIcon icon={faBell} size="xl"/></button>
+    </nav>
       <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer showLiked={showLiked}/>
