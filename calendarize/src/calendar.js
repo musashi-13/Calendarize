@@ -95,7 +95,6 @@ const Calendar = () => {
         const eventStartDate = new Date(event.eventFrom);
         const eventEndDate = new Date(event.eventTo);
 
-        // Include events that start on or after the selected date and end on or before the end of the selected date
         return eventStartDate <= endOfDay && eventEndDate >= currentDate;
       });
 

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { faHeart, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-
 function UpcomingCard(props) {
   const [isLiked, setIsLiked] = useState(props.like);
   const handleLike = () => {
@@ -81,5 +79,4 @@ function UpcomingCard(props) {
     );
   }
 }
-
 export default UpcomingCard

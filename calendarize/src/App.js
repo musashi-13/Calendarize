@@ -8,20 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faBell, faScrewdriverWrench, faUser} from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-
-
 function App() {
   const [showLiked, setShowLiked] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
-
   const toggleShowLiked = () => {
     setShowLiked(!showLiked);
     console.log(showLiked)
   };
+  
   return (
     <div>
       <nav className="navBar">
