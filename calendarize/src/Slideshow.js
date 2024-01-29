@@ -34,12 +34,12 @@ export default function Slideshow() {
     useEffect(() => {
         const intervalId = setInterval(() => {
           nextSlide();
-        }, 5000);
+        }, 7000);
     
         return () => clearInterval(intervalId);
       }, [nextSlide]);
     return(
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center", background: "#fff"}}>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", background: "#fff", position: "relative"}}>
             <div className='Spotlight'>
                 <button style={{background: "rgb(0,0,0,0)", border: "none"}} onClick={prevSlide}><FontAwesomeIcon icon={faCaretLeft} size='2xl' color='black'/></button>
                 {spotlightevents.map((item, idx) =>{

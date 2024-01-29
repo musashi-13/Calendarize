@@ -24,13 +24,15 @@ function App() {
     <div>
       <nav className="navBar">
         <h1 className="nameLogo">SYNCd</h1>
-        <button className="notifications"><a href='https://github.com/kaushik-bhat/Calendarize' style={{textDecoration: "none", color: "white"}}><FontAwesomeIcon icon={faGithub} size="xl"/></a></button>      
-        <button className="notifications" style={{color: "white"}}><FontAwesomeIcon icon={faScrewdriverWrench} size="xl"/></button>
-        <button className="likedEvents" onClick={toggleShowLiked} style={{color: "white"}}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
-        <button className="notifications" style={{color: "white"}}><FontAwesomeIcon icon={faUser} size="xl"/></button>      
-        <button className="notifications" onClick={toggleSidebar} style={{color: "white"}}><FontAwesomeIcon icon={faBell} size="xl"/></button>
+        <button className="navButtons"><a href='https://github.com/kaushik-bhat/Calendarize' style={{textDecoration: "none", color: "white"}}><FontAwesomeIcon icon={faGithub} size="xl"/></a></button>      
+        <button className="navButtons"><FontAwesomeIcon icon={faScrewdriverWrench} size="xl"/></button>
+        <button className="likedEvents" onClick={toggleShowLiked}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
+        <button className="navButtons"><FontAwesomeIcon icon={faUser} size="xl"/></button>      
+        <button className="navButtons" onClick={toggleSidebar}><FontAwesomeIcon icon={faBell} size="xl"/></button>
       </nav>
-      <h1 className="todayEvents" style={{marginBottom: "0.5em"}}>Spotlight</h1>
+      <div style={{position: "fixed", height: "54px", backdropFilter: "blur(5px)", width: "100%", zIndex: "9"}}></div>
+      <div style={{height: "40px"}}></div>
+      <h1 className="todayEvents" style={{marginBottom: "0.5em", position: "relative"}}>Spotlight</h1>
       <Slideshow/>
       <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       <h1 className="todayEvents">Today's Events</h1>
