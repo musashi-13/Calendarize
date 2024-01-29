@@ -7,6 +7,8 @@ import Sidebar from './sideBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faBell, faScrewdriverWrench, faUser} from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import Slideshow from './Slideshow';
+
 
 function App() {
   const [showLiked, setShowLiked] = useState(false);
@@ -18,7 +20,6 @@ function App() {
     setShowLiked(!showLiked);
     console.log(showLiked)
   };
-  
   return (
     <div>
       <nav className="navBar">
@@ -28,7 +29,9 @@ function App() {
         <button className="likedEvents" onClick={toggleShowLiked} style={{color: "white"}}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
         <button className="notifications" style={{color: "white"}}><FontAwesomeIcon icon={faUser} size="xl"/></button>      
         <button className="notifications" onClick={toggleSidebar} style={{color: "white"}}><FontAwesomeIcon icon={faBell} size="xl"/></button>
-    </nav>
+      </nav>
+      <h1 className="todayEvents" style={{marginBottom: "0.5em"}}>Spotlight</h1>
+      <Slideshow/>
       <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer showLiked={showLiked}/>

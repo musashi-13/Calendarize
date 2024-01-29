@@ -92,37 +92,20 @@
 }
 
 
+
+
 .calendarContainer{
   position: absolute;
-  top: 500px;
+  top: 1000px;
   transition: 0.4s;
-}
-
-.upcomingCardContainer:hover + .calendarContainer{
-  top: 600px;
-}
-
-
-.newRegistrations, .calendarContainer{
   margin-left: 3em;
   margin-right: 3em;
 }
 
-.calendarContainer{
-  position: absolute;
-  top: 500px;
-  transition: 0.4s;
-}
-
 .upcomingCardContainer:hover + .calendarContainer{
-  top: 600px;
+  top: 1120px;
 }
 
-
-.newRegistrations, .calendarContainer{
-  margin-left: 3em;
-  margin-right: 3em;
-}
 
 
 .calendar-table {
@@ -130,7 +113,7 @@
   border-collapse: collapse;
   margin-top: 20px;
   margin-left: 0px;
-  margin-right:50px
+  margin-right:50px;
 }
 
 .header-cell{
@@ -178,7 +161,7 @@ margin:0 auto;
 .sidebar {
   position: fixed;
   top: 0;
-  right: -350px; /* Adjust this value to control how far the sidebar is hidden */
+  right: -350px;
   width: 350px;
   height: 1500px;
   background: white;
@@ -217,4 +200,48 @@ margin:0 auto;
   border: none;
   margin: 1.5em;
   margin-top: 2em;
+}
+
+.Spotlight{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+
+.SlideHolder{
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding-right: 2em;
+  padding-left: 2em;
+  width: 90%;
+  height: 400px;
+}
+
+.slide-hidden{
+  display: none;
+}
+
+.SlideContent{
+  margin: auto;
+  margin-left: 0px;
+  position: relative;
+}
+
+.indicator {
+  background-color: black;
+  height: 0.75rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color: grey;
 }

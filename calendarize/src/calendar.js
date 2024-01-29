@@ -31,7 +31,6 @@ const Calendar = () => {
       const eventFrom = new Date(event.eventFrom);
       const eventTo = new Date(event.eventTo);
 
-      // Adjusted logic to include events that start on the selected day
       const eventStartDate = new Date(eventFrom.getFullYear(), eventFrom.getMonth(), eventFrom.getDate());
 
       return currentDate >= eventStartDate && currentDate < eventTo;
