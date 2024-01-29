@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import Slide from './slide';
+import Slide from './Slide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight, faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 
