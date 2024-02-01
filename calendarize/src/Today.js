@@ -72,6 +72,7 @@ function TodayCard(props) {
           }
         </div>
       );
+
     }
   } else {
     return (
@@ -83,7 +84,7 @@ function TodayCard(props) {
                 style={{ borderRadius: "10px", marginLeft: "40%", marginTop: "5%"}}
                 alt="ghost"
             />
-            <h2 style={{margin:0, color: "#4d4d4d", textAlign: "center"}}>There are no events for today.</h2>
+            <h2 style={{margin:0, color: "#4d4d4d", textAlign: "center"}}>There are no such events for today.</h2>
       </div>
     );
   }

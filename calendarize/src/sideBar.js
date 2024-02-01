@@ -31,8 +31,6 @@ const Sidebar = ({ isOpen, onClose }) => {
             hour12: true,
             });
             const gradientStyle = cardTheme[cEvent.eventTheme];
-            console.log(cEvent.eventName)
-            console.log(closingDate-today)
             if (
             closingDate-today < 86400000 && closingDate-today >0
             ) {

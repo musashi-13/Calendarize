@@ -28,17 +28,9 @@
 .filterContainer{
   display: flex;
   gap: 1rem;
-  margin-left: 3em;
   padding-top: 1.2em;
-}
-
-.filterButtons{
-  padding: 0.5rem;
-  padding-left: 0.7em;
-  padding-right: 0.7em;
-  font-size: 1em;
-  background-color: white;
-  border-radius: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .todayCardContainer{
@@ -114,22 +106,17 @@
   color: red;
 }
 
-#Hackathons:active{
-  background-color: red;
-}
-
 .calendarContainer{
   position: absolute;
-  top: 1000px;
+  top: 1100px;
   transition: 0.4s;
   margin-left: 3em;
   margin-right: 3em;
 }
 
 .upcomingCardContainer:hover + .calendarContainer{
-  top: 1120px;
+  top: 1220px;
 }
-
 
 
 .calendar-table {

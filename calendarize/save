@@ -65,10 +65,7 @@ function UpcomingCardContainer(props) {
           return null;
         } else {
           return (
-            <div 
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}>
+            <div className='UpcomingCardInnerContainer'>
               {props.filterAll || 
               (props.hackathons && cEvent.eventTheme==="Hackathon") ||
               (props.fests && cEvent.eventTheme==="Cultural") ||
@@ -78,6 +75,11 @@ function UpcomingCardContainer(props) {
               (props.marathons && cEvent.eventTheme==="Marathon") ||
               (props.isas && cEvent.eventTheme==="ISA") ||
               (props.conferences && cEvent.eventTheme==="Conference") ? (
+            <div
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+            >
               <UpcomingCard
                 EventName={cEvent.eventName}
                 EventFrom={formattedFromDate}
@@ -89,9 +91,10 @@ function UpcomingCardContainer(props) {
                 Like={props.showLiked}
                 linearGradient={gradientStyle}
               />
+            </div>
               ) : (<UpcomingCard/>)}
               </div>
-          );  
+          );
         }
       })}
     </div>

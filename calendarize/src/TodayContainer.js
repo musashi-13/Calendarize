@@ -27,8 +27,6 @@ function TodayCardContainer(props) {
   };
 
   const today = new Date();
-
-  // Filter events happening today
   const eventsToday = CollegeEvents.filter((cEvent) => {
     const eventFromDate = new Date(cEvent.eventFrom);
     const eventToDate = new Date(cEvent.eventTo);
@@ -42,7 +40,7 @@ function TodayCardContainer(props) {
         today.getFullYear() <= eventToDate.getFullYear())
     );
   });
-
+  console.log(props.filterAll)
   return (
     <div className="todayCardContainer" ref={containerRef}>
       {eventsToday.length > 0 ? (
@@ -64,26 +62,39 @@ function TodayCardContainer(props) {
             hour12: true,
           });
           const closingDate = new Date(cEvent.regStatus);
-
           return (
-            <div
-              key={cEvent.id}
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-            >
-              <TodayCard
-                EventName={cEvent.eventName}
-                EventFrom={formattedFromDate}
-                EventTo={formattedToDate}
-                EventDesc={cEvent.eventDesc}
-                StudentCrit={cEvent.studentCriteria}
-                RegLink={cEvent.regLink}
-                RegStatus={closingDate - today}
-                Like={props.showLiked}
-                TodayStatus={true}
-                linearGradient={cardTheme[cEvent.eventTheme]}
-              />
+            <div>
+              {props.filterAll || 
+              (props.hackathons && cEvent.eventTheme==="Hackathon") ||
+              (props.fests && cEvent.eventTheme==="Cultural") ||
+              (props.recruitments && cEvent.eventTheme==="Recruitment") ||
+              (props.competitions && cEvent.eventTheme==="Competition") ||
+              (props.quizzes && cEvent.eventTheme==="Quiz") ||
+              (props.marathons && cEvent.eventTheme==="Marathon") ||
+              (props.isas && cEvent.eventTheme==="ISA") ||
+              (props.conferences && cEvent.eventTheme==="Conference") ? (
+                <div
+                  key={cEvent.id}
+                  onMouseDown={handleMouseDown}
+                  onMouseUp={handleMouseUp}
+                  onMouseMove={handleMouseMove}
+                >
+                  <TodayCard
+                    EventName={cEvent.eventName}
+                    EventFrom={formattedFromDate}
+                    EventTo={formattedToDate}
+                    EventDesc={cEvent.eventDesc}
+                    StudentCrit={cEvent.studentCriteria}
+                    RegLink={cEvent.regLink}
+                    RegStatus={closingDate - today}
+                    Like={props.showLiked}
+                    TodayStatus={true}
+                    linearGradient={cardTheme[cEvent.eventTheme]}
+                  />
+                </div>
+              ):(
+                <TodayCard/>
+              )}
             </div>
           );
         })
