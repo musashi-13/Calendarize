@@ -34,6 +34,16 @@ function App() {
       <div style={{height: "40px"}}></div>
       <h1 className="todayEvents" style={{marginBottom: "0.5em", position: "relative"}}>Spotlight</h1>
       <Slideshow/>
+      <div className='filterContainer'>
+        <button className='filterButtons' id='Hackathons'>Hackathons</button>
+        <button className='filterButtons' id='Fests'>Fests</button>
+        <button className='filterButtons' id='Recruitments'>Recruitments</button>
+        <button className='filterButtons' id='Competitions'>Competitions</button>
+        <button className='filterButtons' id='Conferences'>Conferences</button>
+        <button className='filterButtons' id='ISAs'>ISAs</button>
+        <button className='filterButtons' id='Quizzes'>Quizzes</button>
+        <button className='filterButtons' id='Marathons'>Marathons</button>
+      </div>
       <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
       <h1 className="todayEvents">Today's Events</h1>
       <TodayCardContainer showLiked={showLiked}/>

@@ -14,7 +14,7 @@ const spotlightevents = [
     },
     {
         eventName: "Otakuiz",
-        eventDesc: "Anime lovers and Quizzing enthusiasts join us, QQC on 30th January,2024 for an unforgettable experience as we challenge your quick thinking and knowledge on all things anime from cunning villains and their philosophical ideologies to angry Tsunderes, from Eren's raging quest for freedom to Naruto's and Asta's unbreakable determination to achieve their dreams, from clashes between powerful monsters such as Sukuna and Gojo to tales of nostalgia, warmth and heartbreak - we cover it all.",
+        eventDesc: "Anime lovers and Quizzing enthusiasts join us, QQC on 30th January,2024 for an unforgettable experience as we challenge your quick thinking and knowledge on all things anime. Get a chance to win cash prizes upto 3000 rupees!",
         eventImage: "/animequiz.png",
         eventDate: "30th Jan 2024",
         eventTime: "4 PM",
