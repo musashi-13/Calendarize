@@ -23,6 +23,11 @@
   padding: 1em;
   color: white;
   padding-top: 25px;
+  transition-duration: 0.3s;
+}
+
+.navButtons:hover, .likedEvents:hover{
+  padding-top: 20px;
 }
 
 .filterContainer{
