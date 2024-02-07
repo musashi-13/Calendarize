@@ -89,7 +89,7 @@ function UpcomingCardContainer(props) {
                 Like={props.showLiked}
                 linearGradient={gradientStyle}
               />
-              ) : (<UpcomingCard/>)}
+              ) : (null)}
               </div>
           );  
         }

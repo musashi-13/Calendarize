@@ -1,21 +1,20 @@
-import './App.css';
 import React, { useState } from 'react';
-import './filterbuttons.css'
+import './App.css';
 import TodayCardContainer from './TodayContainer';
 import UpcomingCardContainer from './UpcomingContainer';
 import Calendar from './calendar';
 import Sidebar from './sideBar';
+import Slideshow from './Slideshow';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faBell, faScrewdriverWrench, faUser} from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import Slideshow from './Slideshow';
-
+import { Link } from 'react-router-dom';
 function App() {
   const [showLiked, setShowLiked] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
-  };
+  };  
   const toggleShowLiked = () => {
     setShowLiked(!showLiked);
   };
@@ -74,11 +73,11 @@ function App() {
   };
   return (
     <div>
+      
       <nav className="navBar">
         <h1 className="nameLogo">SYNCd</h1>
-        <button className="navButtons"><a href='https://github.com/kaushik-bhat/Calendarize' style={{textDecoration: "none", color: "white"}}><FontAwesomeIcon icon={faGithub} size="xl"/></a></button>      
-        <button className="navButtons"><FontAwesomeIcon icon={faScrewdriverWrench} size="xl"/></button>
-        <button className="likedEvents" onClick={toggleShowLiked}><FontAwesomeIcon icon={faHeart} size="xl" /></button>
+        <button className="navButtons"><a href='https://github.com/musashi-13/Calendarize' style={{textDecoration: "none", color: "white"}}><FontAwesomeIcon icon={faGithub} size="xl"/></a></button>      
+        <button className="navButtons"><Link to='/login' style={{color: 'white'}}><FontAwesomeIcon icon={faScrewdriverWrench} size="xl"/></Link></button>
         <button className="navButtons"><FontAwesomeIcon icon={faUser} size="xl"/></button>      
         <button className="navButtons" onClick={toggleSidebar}><FontAwesomeIcon icon={faBell} size="xl"/></button>
       </nav>
@@ -87,6 +86,7 @@ function App() {
       <h1 className="todayEvents" style={{marginBottom: "0.5em", position: "relative"}}>Spotlight</h1>
       <Slideshow/>
       <div className='filterContainer'>
+          <button className={`filterButtons ${showLiked ? 'activeLiked' : 'activeUnliked'}`} onClick={toggleShowLiked}><FontAwesomeIcon icon={faHeart} size="l" /></button>
           <button className={`filterButtons ${isActiveAll ? 'activeAll' : ''}`} onClick={toggleColorAll}>All</button>
           <button className={`filterButtons ${isActive1 ? 'active1' : ''}`} onClick={toggleColor1}>Hackathons</button>
           <button className={`filterButtons ${isActive2 ? 'active2' : ''}`} onClick={toggleColor2}>Fests</button>
@@ -108,4 +108,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default App; 
