@@ -41,7 +41,7 @@ export default function Slide({ item, slide, idx }){
                 </p>
                 <p style={{color: "rgb(255, 255, 255, 0.8)", width: "80%"}}>{item.eventDesc}</p>
                 <button className="regButton">
-                    <a style={{ textDecoration: "none" }} href='www.google.com' target="_blank" rel="noreferrer">
+                    <a style={{ textDecoration: "none" }} href='https://www.google.com' target="_blank" rel="noreferrer">
                         Register Now! <FontAwesomeIcon icon={faArrowUpRightFromSquare} size='xs'/>
                     </a>
                 </button>

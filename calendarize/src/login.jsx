@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate} from 'react-router-dom'
 
-
 export default function Login(){
 
     const [email, setEmail] = useState('');

@@ -1,22 +1,106 @@
+import './addevent.css'
+import React, {useState} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFolderPlus, faInfoCircle, faSquareXmark, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
+
+
 export default function AddEvent(){
+
+    const [edesc, setDesc] = useState('');
+    const [ename, setName] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleDescChange = (event) => {
+    setDesc(event.target.value);
+    };
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setIsSubmitting(true);
+
+        setTimeout(() => {
+            setIsSubmitting(false);
+            setIsSubmitted(true);
+        }, 2000); 
+    };
+
+    const handleCancel = () => {
+        setIsSubmitted(false);
+        setIsSubmitting(false);
+    };
+
     return(
-        <div>
-            <form>
-                <h1>Add an event</h1>
-                <p>Name of event</p>
+        <div className='event-container'>
+            <form className={`event-form ${(isSubmitting || isSubmitted) ? 'submitting' : ''}`} onSubmit={handleSubmit}>
+                <Link to='../login'><FontAwesomeIcon icon={faArrowLeft} style={{position: "absolute", color: "rgb(96, 96, 96)"}} /></Link>
+                <h2>Add an event</h2>
+                <label>Event Name</label>
+                <div>
+                    <input maxLength='25' type="text" value={ename} onChange={handleNameChange} style={{width: '83%'}}/>
+                    <label>{ename.length}/25</label>
+                </div> 
+                <label>Event Description &nbsp; 
+                    <FontAwesomeIcon className='info-bubble' icon={faInfoCircle} size='xs'/>
+                    <span class="info-text">Keep</span>
+                </label>
+                <div>
+                    <input maxLength='120' type="text" value={edesc} onChange={handleDescChange} style={{width: '83%'}}/>
+                    <label>{edesc.length}/120</label>
+                </div>  
+                <label>Event Category &nbsp; 
+                    <FontAwesomeIcon className='info-bubble' icon={faInfoCircle} size='xs'/>
+                    <span class="info-text">Tooltip text</span>
+                </label>
+                <select className='select-category'>
+                <option value="Hackathon">--Category--</option>
+                    <option value="Hackathon">Hackathon</option>
+                    <option value="Fest">Fest</option>
+                    <option value="Recruitment">Recruitment</option>
+                    <option value="Competition">Competition</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Quiz">Quiz</option>
+                    <option value="Marathon">Marathon</option>
+                    <option value="ISAs">ISAs</option>
+                </select>
+                <label>Start date and time</label>
+                <div className='date-time-container'>
+                    <input type='date'/>
+                    <input type='time'/>
+                </div>
+                <label>End date and time</label>
+                <div className='date-time-container'>
+                    <input type='date'/>
+                    <input type='time'/>
+                </div>
+                <label>Registration Link</label>
                 <input/>
-                <p>Event Description</p>
+                <label>Registration end date and time</label>
+                <div className='date-time-container'>
+                    <input type='date'/>
+                    <input type='time'/>
+                </div>
+                <label>Instagram Link</label>
                 <input/>
-                <p>Start date and time</p>
-                <input/><input/>
-                <p>End date and time</p>
-                <input/><input/>
-                <p>Registration Link</p>
+                <label>Add Image Link</label>
                 <input/>
-                <p>Instagram Link</p>
-                <input/>
-                <p>Registration Link</p>
-                <input/>
+                <div className='event-button-container'>
+                {!isSubmitted ? (
+                        <>
+                            <button type='submit' id='Add'>Add &nbsp; <FontAwesomeIcon icon={faFolderPlus} /></button>
+                            <button type='clear' id='Clear'>Clear &nbsp; <FontAwesomeIcon icon={faSquareXmark} /></button>
+                        </>
+                    ) : (
+                        <>
+                            <button type='button' id='Confirm'>Confirm</button>
+                            <button type='button' id='Cancel' onClick={handleCancel}>Cancel</button>
+                        </>
+                    )}
+                </div>
             </form>
         </div>
     )
