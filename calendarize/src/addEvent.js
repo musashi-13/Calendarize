@@ -10,7 +10,6 @@ export default function AddEvent(){
     const [edesc, setDesc] = useState('');
     const [ename, setName] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleDescChange = (event) => {
     setDesc(event.target.value);
@@ -25,18 +24,16 @@ export default function AddEvent(){
 
         setTimeout(() => {
             setIsSubmitting(false);
-            setIsSubmitted(true);
         }, 2000); 
     };
 
     const handleCancel = () => {
-        setIsSubmitted(false);
         setIsSubmitting(false);
     };
 
     return(
         <div className='event-container'>
-            <form className={`event-form ${(isSubmitting || isSubmitted) ? 'submitting' : ''}`} onSubmit={handleSubmit}>
+            <form className={`event-form ${isSubmitting ? 'submitting' : ''}`} onSubmit={handleSubmit}>
                 <Link to='../login'><FontAwesomeIcon icon={faArrowLeft} style={{position: "absolute", color: "rgb(96, 96, 96)"}} /></Link>
                 <h2>Add an event</h2>
                 <label>Event Name</label>
@@ -89,7 +86,7 @@ export default function AddEvent(){
                 <label>Add Image Link</label>
                 <input/>
                 <div className='event-button-container'>
-                {!isSubmitted ? (
+                {!isSubmitting ? (
                         <>
                             <button type='submit' id='Add'>Add &nbsp; <FontAwesomeIcon icon={faFolderPlus} /></button>
                             <button type='clear' id='Clear'>Clear &nbsp; <FontAwesomeIcon icon={faSquareXmark} /></button>
