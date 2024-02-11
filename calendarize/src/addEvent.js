@@ -20,15 +20,19 @@ export default function AddEvent(){
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log("Form successfully submitted");
+    };
+    
+    const handleAdd = (event) => {
+        event.preventDefault();
         setIsSubmitting(true);
-
-        setTimeout(() => {
-            setIsSubmitting(false);
-        }, 2000); 
+        console.log(isSubmitting);
     };
 
-    const handleCancel = () => {
+    const handleCancel = (event) => {
+        event.preventDefault();
         setIsSubmitting(false);
+        console.log(isSubmitting);
     };
 
     return(
@@ -88,12 +92,12 @@ export default function AddEvent(){
                 <div className='event-button-container'>
                 {!isSubmitting ? (
                         <>
-                            <button type='submit' id='Add'>Add &nbsp; <FontAwesomeIcon icon={faFolderPlus} /></button>
+                            <button type='button' id='Add' onClick={handleAdd}>Add &nbsp; <FontAwesomeIcon icon={faFolderPlus} /></button>
                             <button type='clear' id='Clear'>Clear &nbsp; <FontAwesomeIcon icon={faSquareXmark} /></button>
                         </>
                     ) : (
                         <>
-                            <button type='button' id='Confirm'>Confirm</button>
+                            <button type='submit' id='Confirm'>Confirm</button>
                             <button type='button' id='Cancel' onClick={handleCancel}>Cancel</button>
                         </>
                     )}
