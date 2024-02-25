@@ -10,7 +10,7 @@ import AddEvent from './addEvent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/Calendarize">
     <Routes>
       <Route path='/' element={<App/>} />
       <Route path='/login' element={<Login/>} />
