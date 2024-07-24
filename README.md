@@ -1,4 +1,4 @@
-A prototype project made for hackathon that tries to make the lives of college students easier.
+```A prototype project made for hackathon that tries to make the lives of college students easier.```
 
 *Problem Statement:*
 
@@ -19,3 +19,4 @@ A mail parser so that all the sources can just send us a mail (could be the same
 * [laksxya](https://github.com/laksxya)
 * [kaushik-bhat](https://github.com/kaushik-bhat)
 
+```Sidenotes: I consider this project complete. I migrated it from react to next.js and will create another server code for all the necessary apis.```
